@@ -1,4 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container">
+
 <?php
+
 $elh = [
     ["poradi" => "1", "mesto" => "Plzen", "zapasy" => 10, "vyhry" => 6, "prohry" => 2, "skore" => "38:24", "body" => 21 ],
     ["poradi" => "2", "mesto" => "Liberec", "zapasy" => 10, "vyhry" => 5, "prohry" => 3, "skore" => "29:22", "body" => 19 ],
@@ -15,3 +28,44 @@ $elh = [
     ["poradi" => "13", "mesto" => "Zlin", "zapasy" => 8, "vyhry" => 2, "prohry" => 5, "skore" => "14:24", "body" => 7 ],
     ["poradi" => "14", "mesto" => "Karlovy Vary", "zapasy" => 10, "vyhry" => 2, "prohry" => 8, "skore" => "21:36", "body" => 6 ],
 ];
+
+$fields = ['poradi', 'mesto', 'zapasy', 'vyhry', 'prohry', 'skore', 'body'];
+
+$html = "<table class='table table-striped'>";
+$html .= "<thead>" .
+        "<tr>" .
+            "<th>Pořadí</th>" .
+            "<th>Město</th>" .
+            "<th>Zápasy</th>" .
+            "<th>Výhry</th>" .
+            "<th>Prohry</th>" .
+            "<th>Skore</th>" .
+            "<th>Body</th>" .
+        "</tr>" .
+    "</thead>";
+$html .= "<tbody>";
+foreach ($elh as $row) {
+    $html .= "<tr>";
+    foreach ($fields as $field) {
+        $html .= "<td>" . htmlspecialchars( $row[$field] ) . "</td>";
+        }
+    $html .= "</tr>";
+//    $html .= "<tr>" .
+//            "<td>{$row['poradi']}</td>" .
+//            "<td>{$row['mesto']}</td>" .
+//            "<td>{$row['zapasy']}</td>" .
+//            "<td>{$row['vyhry']}</td>" .
+//            "<td>{$row['prohry']}</td>" .
+//            "<td>{$row['skore']}</td>" .
+//            "<td>{$row['body']}</td>" .
+//        "</tr>";
+}
+
+$html .= "</tbody>";
+$html .="</table>";
+
+echo $html;
+
+?>
+</body>
+</html>
