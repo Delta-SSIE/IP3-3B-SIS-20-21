@@ -1,7 +1,18 @@
 <?php
-    require_once ("_includes/db.php");
-    $roomId = (int) ($_GET['roomId'] ?? 0);
+require_once ("_includes/db.php");
+$roomId = (int) ($_GET['roomId'] ?? 0);
 
+$pdo = dbConnect();
+
+$stmt = $pdo->prepare("SELECT * FROM room WHERE room_id=:roomId");
+$stmt->execute(['roomId' => $roomId]);
+
+if ($stmt->rowCount() == 0) {
+    http_response_code(404);
+    $success = false;
+} else {
+    $success = true;
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,12 +28,7 @@
 <body class="container">
 <?php
 
-$pdo = dbConnect();
-
-$stmt = $pdo->prepare("SELECT * FROM room WHERE room_id=:roomId");
-$stmt->execute(['roomId' => $roomId]);
-
-if ($stmt->rowCount() == 0) {
+if ($success) {
     echo "Záznam neobsahuje žádná data";
 } else {
     $html = "<h1>Detail Místnosti $roomId</h1>";
