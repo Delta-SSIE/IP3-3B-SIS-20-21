@@ -72,7 +72,7 @@ echo $data->getInformace();
 echo "<br>";
 echo "<br>";
 
-$arrData = new ArrayData();
+$arrData = new ArrayPerson();
 $arrData->count = 5;
 $arrData->length = 3;
 
