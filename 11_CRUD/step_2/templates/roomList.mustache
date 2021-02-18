@@ -1,0 +1,31 @@
+<h1>Výpis místností</h1>
+
+<a href="create.php" class="btn btn-primary mt-3">Nová místnost</a>
+
+<table class="table table-striped roomList">
+    <thead>
+    <tr>
+        <th>Jméno</th>
+        <th>Číslo</th>
+        <th>Tel.</th>
+        <th>Akce</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {{# rooms }}
+        <tr>
+            <td><a href="{{ roomDetail }}?roomId={{ room_id }}">{{ name }}</a></td>
+            <td>{{ no }}</td>
+            <td>{{ phone }}</td>
+            <td>
+                <a href="update.php?room_id={{ room_id }}" class="btn btn-primary">Změnit</a>
+                <form action="delete.php" method="post" class="form-inline" onsubmit="return confirm('Skutečně smazat?\nAkce je nevratná!');">
+                    <input type="hidden" name="room_id" value="{{ room_id }}">
+                    <input type="submit" value="Smazat" class="btn btn-danger">
+                </form>
+            </td>
+        </tr>
+    {{/ rooms }}
+    </tbody>
+</table>
