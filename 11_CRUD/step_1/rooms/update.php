@@ -66,9 +66,9 @@ final class UpdateRoomPage extends BaseDBPage {
             return $this->m->render("roomForm", ['update' => true, 'room' => $this->room ]);
         } elseif ($this->state === self::STATE_PROCESSED) {
             if ($this->result === self::RESULT_SUCCESS) {
-                return $this->m->render("roomSuccess", ["message" => "Místnost byla úspěšně vytvořena."]);
+                return $this->m->render("roomSuccess", ["message" => "Místnost byla úspěšně aktualizována."]);
             } elseif ($this->result === self::RESULT_FAIL) {
-                return $this->m->render("roomFail", ["message" => "Vytvoření místnosti selhalo"]);
+                return $this->m->render("roomFail", ["message" => "Aktualizace místnosti selhala"]);
             }
         }
     }
