@@ -4,13 +4,6 @@ require "../includes/bootstrap.inc.php";
 
 final class CreateRoomPage extends BaseCRUDPage {
 
-    const STATE_FORM_REQUESTED = 1;
-    const STATE_FORM_SENT = 2;
-    const STATE_PROCESSED = 3;
-
-    const RESULT_SUCCESS = 1;
-    const RESULT_FAIL = 2;
-
     private RoomModel $room;
 
     protected function setUp(): void

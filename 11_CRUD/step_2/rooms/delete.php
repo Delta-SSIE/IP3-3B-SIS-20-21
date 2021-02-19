@@ -4,12 +4,6 @@ require "../includes/bootstrap.inc.php";
 
 final class DeleteRoomPage extends BaseCRUDPage {
 
-    const STATE_DELETE_REQUESTED = 1;
-    const STATE_PROCESSED = 2;
-
-    const RESULT_SUCCESS = 1;
-    const RESULT_FAIL = 2;
-
     private ?int $room_id;
 
     protected function setUp(): void
